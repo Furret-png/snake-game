@@ -61,5 +61,4 @@ input.onButtonPressed(Button.B, function () {
     if (direction>3) {
         direction = 0
     }
-    basic.clearScreen()
 })
