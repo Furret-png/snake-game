@@ -14,7 +14,7 @@ forever(function () {
     }
     if (snakeX[0] > 4 || snakeX[0] < 0 || snakeY[0] > 4 || snakeY[0] < 0) {
         defeat = 1
-
+        basic.clearScreen()
     }
     if (defeat == 1 || victory == 1) {
         done = 1
@@ -23,6 +23,7 @@ forever(function () {
 /// move snake based on direction
 forever(function () {
     if (done == 0) {
+        basic.clearScreen()
         if (length > 24) {
             snakeX[24] = snakeX[23]
             snakeY[24] = snakeY[23]
@@ -137,57 +138,7 @@ forever(function () {
             led.unplot(snakeX[0], snakeY[0])
             snakeX[0] += -1
         }
-        led.plotBrightness(snakeX[0], snakeY[0], bright)
         length = snakeX.length
-        if (length > 24) {
-            led.unplot(snakeX[24], snakeY[24])
-        } if (length > 23) {
-            led.unplot(snakeX[23], snakeY[23])
-        } if (length > 22) {
-            led.unplot(snakeX[22], snakeY[22])
-        } if (length > 21) {
-            led.unplot(snakeX[21], snakeY[21])
-        } if (length > 20) {
-            led.unplot(snakeX[20], snakeY[20])
-        } if (length > 19) {
-            led.unplot(snakeX[19], snakeY[19])
-        } if (length > 18) {
-            led.unplot(snakeX[18], snakeY[18])
-        } if (length > 17) {
-            led.unplot(snakeX[17], snakeY[17])
-        } if (length > 16) {
-            led.unplot(snakeX[16], snakeY[16])
-        } if (length > 15) {
-            led.unplot(snakeX[15], snakeY[15])
-        } if (length > 14) {
-            led.unplot(snakeX[14], snakeY[14])
-        } if (length > 13) {
-            led.unplot(snakeX[13], snakeY[13])
-        } if (length > 12) {
-            led.unplot(snakeX[12], snakeY[12])
-        } if (length > 11) {
-            led.unplot(snakeX[11], snakeY[11])
-        } if (length > 10) {
-            led.unplot(snakeX[10], snakeY[10])
-        } if (length > 9) {
-            led.unplot(snakeX[9], snakeY[9])
-        } if (length > 8) {
-            led.unplot(snakeX[8], snakeY[8])
-        } if (length > 7) {
-            led.unplot(snakeX[7], snakeY[7])
-        } if (length > 6) {
-            led.unplot(snakeX[6], snakeY[6])
-        } if (length > 5) {
-            led.unplot(snakeX[5], snakeY[5])
-        } if (length > 4) {
-            led.unplot(snakeX[4], snakeY[4])
-        } if (length > 3) {
-            led.unplot(snakeX[3], snakeY[3])
-        } if (length > 2) {
-            led.unplot(snakeX[2], snakeY[2])
-        } if (length > 1) {
-            led.unplot(snakeX[1], snakeY[1])
-        }
         /// if snake eats apple move apple, adjust score, and make snake longer
         if (snakeX[0] == appleX && snakeY[0] == appleY) {
             score += 1
@@ -196,132 +147,134 @@ forever(function () {
             led.plotBrightness(appleX, appleY, bright - 55)
             snakeX.push(-1)
             snakeY.push(-1)
-            while (appleX == snakeX[0] && appleY == snakeY[0]) {
+        }
+    }
+})
+basic.forever(function () {
+    led.plotBrightness(snakeX[0], snakeY[0], bright)
+    while (appleX == snakeX[0] && appleY == snakeY[0]) {
+        appleX = randint(0, 4)
+        appleY = randint(0, 4)
+    }
+    if (length > 1) {
+        while (appleX == snakeX[1] && appleY == snakeY[1]) {
+            appleX = randint(0, 4)
+            appleY = randint(0, 4)
+        }
+        if (length > 2) {
+            while (appleX == snakeX[2] && appleY == snakeY[2]) {
                 appleX = randint(0, 4)
                 appleY = randint(0, 4)
             }
-            if (length > 1) {
-                while (appleX == snakeX[1] && appleY == snakeY[1]) {
+            if (length > 3) {
+                while (appleX == snakeX[3] && appleY == snakeY[3]) {
                     appleX = randint(0, 4)
                     appleY = randint(0, 4)
                 }
-                if (length > 2) {
-                    while (appleX == snakeX[2] && appleY == snakeY[2]) {
+                if (length > 4) {
+                    while (appleX == snakeX[4] && appleY == snakeY[4]) {
                         appleX = randint(0, 4)
                         appleY = randint(0, 4)
                     }
-                    if (length > 3) {
-                        while (appleX == snakeX[3] && appleY == snakeY[3]) {
+                    if (length > 5) {
+                        while (appleX == snakeX[5] && appleY == snakeY[5]) {
                             appleX = randint(0, 4)
                             appleY = randint(0, 4)
                         }
-                        if (length > 4) {
-                            while (appleX == snakeX[4] && appleY == snakeY[4]) {
+                        if (length > 6) {
+                            while (appleX == snakeX[6] && appleY == snakeY[6]) {
                                 appleX = randint(0, 4)
                                 appleY = randint(0, 4)
                             }
-                            if (length > 5) {
-                                while (appleX == snakeX[5] && appleY == snakeY[5]) {
+                            if (length > 7) {
+                                while (appleX == snakeX[7] && appleY == snakeY[7]) {
                                     appleX = randint(0, 4)
                                     appleY = randint(0, 4)
                                 }
-                                if (length > 6) {
-                                    while (appleX == snakeX[6] && appleY == snakeY[6]) {
+                                if (length > 8) {
+                                    while (appleX == snakeX[8] && appleY == snakeY[8]) {
                                         appleX = randint(0, 4)
                                         appleY = randint(0, 4)
                                     }
-                                    if (length > 7) {
-                                        while (appleX == snakeX[7] && appleY == snakeY[7]) {
+                                    if (length > 9) {
+                                        while (appleX == snakeX[9] && appleY == snakeY[9]) {
                                             appleX = randint(0, 4)
                                             appleY = randint(0, 4)
                                         }
-                                        if (length > 8) {
-                                            while (appleX == snakeX[8] && appleY == snakeY[8]) {
+                                        if (length > 10) {
+                                            while (appleX == snakeX[10] && appleY == snakeY[10]) {
                                                 appleX = randint(0, 4)
                                                 appleY = randint(0, 4)
                                             }
-                                            if (length > 9) {
-                                                while (appleX == snakeX[9] && appleY == snakeY[9]) {
+                                            if (length > 11) {
+                                                while (appleX == snakeX[11] && appleY == snakeY[11]) {
                                                     appleX = randint(0, 4)
                                                     appleY = randint(0, 4)
                                                 }
-                                                if (length > 10) {
-                                                    while (appleX == snakeX[10] && appleY == snakeY[10]) {
+                                                if (length > 12) {
+                                                    while (appleX == snakeX[12] && appleY == snakeY[12]) {
                                                         appleX = randint(0, 4)
                                                         appleY = randint(0, 4)
                                                     }
-                                                    if (length > 11) {
-                                                        while (appleX == snakeX[11] && appleY == snakeY[11]) {
+                                                    if (length > 13) {
+                                                        while (appleX == snakeX[13] && appleY == snakeY[13]) {
                                                             appleX = randint(0, 4)
                                                             appleY = randint(0, 4)
                                                         }
-                                                        if (length > 12) {
-                                                            while (appleX == snakeX[12] && appleY == snakeY[12]) {
+                                                        if (length > 14) {
+                                                            while (appleX == snakeX[14] && appleY == snakeY[14]) {
                                                                 appleX = randint(0, 4)
                                                                 appleY = randint(0, 4)
                                                             }
-                                                            if (length > 13) {
-                                                                while (appleX == snakeX[13] && appleY == snakeY[13]) {
+                                                            if (length > 15) {
+                                                                while (appleX == snakeX[15] && appleY == snakeY[15]) {
                                                                     appleX = randint(0, 4)
                                                                     appleY = randint(0, 4)
                                                                 }
-                                                                if (length > 14) {
-                                                                    while (appleX == snakeX[14] && appleY == snakeY[14]) {
+                                                                if (length > 16) {
+                                                                    while (appleX == snakeX[16] && appleY == snakeY[16]) {
                                                                         appleX = randint(0, 4)
                                                                         appleY = randint(0, 4)
                                                                     }
-                                                                    if (length > 15) {
-                                                                        while (appleX == snakeX[15] && appleY == snakeY[15]) {
+                                                                    if (length > 17) {
+                                                                        while (appleX == snakeX[17] && appleY == snakeY[17]) {
                                                                             appleX = randint(0, 4)
                                                                             appleY = randint(0, 4)
                                                                         }
-                                                                        if (length > 16) {
-                                                                            while (appleX == snakeX[16] && appleY == snakeY[16]) {
+                                                                        if (length > 18) {
+                                                                            while (appleX == snakeX[18] && appleY == snakeY[18]) {
                                                                                 appleX = randint(0, 4)
                                                                                 appleY = randint(0, 4)
                                                                             }
-                                                                            if (length > 17) {
-                                                                                while (appleX == snakeX[17] && appleY == snakeY[17]) {
+                                                                            if (length > 19) {
+                                                                                while (appleX == snakeX[19] && appleY == snakeY[19]) {
                                                                                     appleX = randint(0, 4)
                                                                                     appleY = randint(0, 4)
                                                                                 }
-                                                                                if (length > 18) {
-                                                                                    while (appleX == snakeX[18] && appleY == snakeY[18]) {
+                                                                                if (length > 20) {
+                                                                                    while (appleX == snakeX[20] && appleY == snakeY[20]) {
                                                                                         appleX = randint(0, 4)
                                                                                         appleY = randint(0, 4)
                                                                                     }
-                                                                                    if (length > 19) {
-                                                                                        while (appleX == snakeX[19] && appleY == snakeY[19]) {
+                                                                                    if (length > 21) {
+                                                                                        while (appleX == snakeX[21] && appleY == snakeY[21]) {
                                                                                             appleX = randint(0, 4)
                                                                                             appleY = randint(0, 4)
                                                                                         }
-                                                                                        if (length > 20) {
-                                                                                            while (appleX == snakeX[20] && appleY == snakeY[20]) {
+                                                                                        if (length > 22) {
+                                                                                            while (appleX == snakeX[22] && appleY == snakeY[22]) {
                                                                                                 appleX = randint(0, 4)
                                                                                                 appleY = randint(0, 4)
                                                                                             }
-                                                                                            if (length > 21) {
-                                                                                                while (appleX == snakeX[21] && appleY == snakeY[21]) {
+                                                                                            if (length > 23) {
+                                                                                                while (appleX == snakeX[23] && appleY == snakeY[23]) {
                                                                                                     appleX = randint(0, 4)
                                                                                                     appleY = randint(0, 4)
                                                                                                 }
-                                                                                                if (length > 22) {
-                                                                                                    while (appleX == snakeX[22] && appleY == snakeY[22]) {
+                                                                                                if (length > 24) {
+                                                                                                    while (appleX == snakeX[24] && appleY == snakeY[24]) {
                                                                                                         appleX = randint(0, 4)
                                                                                                         appleY = randint(0, 4)
-                                                                                                    }
-                                                                                                    if (length > 23) {
-                                                                                                        while (appleX == snakeX[23] && appleY == snakeY[23]) {
-                                                                                                            appleX = randint(0, 4)
-                                                                                                            appleY = randint(0, 4)
-                                                                                                        }
-                                                                                                        if (length > 24) {
-                                                                                                            while (appleX == snakeX[24] && appleY == snakeY[24]) {
-                                                                                                                appleX = randint(0, 4)
-                                                                                                                appleY = randint(0, 4)
-                                                                                                            }
-
-                                                                                                        }
                                                                                                     }
                                                                                                 }
                                                                                             }
@@ -355,9 +308,9 @@ led.plotBrightness(snakeX[0], snakeY[0], bright)
 /// plot apple (it flashes)
 basic.forever(function () {
     led.plotBrightness(appleX, appleY, bright - 55)
-    pause(375)
+    pause(300)
     led.unplot(appleX, appleY)
-    pause(375)
+    pause(300)
 })
 /// change direction variable, slow
 input.onButtonPressed(Button.A, function () {
@@ -372,3 +325,13 @@ input.onButtonPressed(Button.B, function () {
         direction = 0
     }
 })
+/// pastebin 
+led.plotBrightness(appleX, appleY, bright - 55)
+pause(20)
+led.unplot(appleX, appleY)
+pause(20)
+led.plotBrightness(appleX, appleY, bright - 55)
+pause(20)
+led.unplot(appleX, appleY)
+pause(20)
+led.plotBrightness(appleX, appleY, bright - 55)
